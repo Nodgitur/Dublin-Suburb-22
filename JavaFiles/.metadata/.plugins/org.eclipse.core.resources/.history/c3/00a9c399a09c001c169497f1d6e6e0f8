@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.adam.VideoDoorbell";
+option java_outer_classname = "VideoDoorbellServiceImpl";
+
+package VideoDoorbell;
+
+service VideoDoorbellService{
+
+	//1st
+	rpc calculate(CalculateRequest) returns (CalculateResponse){}
+
+	//2nd
+	rpc homeVideo(stream Video) returns (stream BellRequest){}
+
+	//3rd
+	//rpc doorStatus(stream DoorLockStatus) returns(DoorLockTamper){}
+
+	//4th
+
+}
+
+message CalculateRequest{
+	float number1 = 1;
+	float number2 = 2;
+
+	enum Operation{
+		ADDITION = 0;
+		SUBTRACTION = 1;
+		MULTIPLICATION = 2;
+		DIVISION = 3;
+	}
+
+	Operation operation = 3;
+
+}
+
+message CalculateResponse{
+
+	float result = 1;
+	string message = 2;
+
+}
+
+message Video{
+	int32 exampleNumber1 = 1;
+}
+
+message BellRequest{
+	int32 exampleNumber2 = 2;
+
+	enum Visual{
+		GREEN = 0;
+		RED = 2;
+		ERROR = 3;
+	}
+
+	Visual visual = 3;
+}
