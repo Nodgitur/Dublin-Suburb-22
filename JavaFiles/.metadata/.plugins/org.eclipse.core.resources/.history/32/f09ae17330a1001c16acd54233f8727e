@@ -1,4 +1,0 @@
-service_type=_maths._tcp.local.
-service_name=Dublin_Suburb_22
-service_description=Service for security systems
-service_port=50051
