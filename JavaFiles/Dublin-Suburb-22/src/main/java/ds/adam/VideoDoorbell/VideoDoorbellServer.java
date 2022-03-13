@@ -1,17 +1,20 @@
-package ds.adam.DublinSuburb22;
+package ds.adam.VideoDoorbell;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Properties;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
-import ds.adam.DublinSuburb22.CalculateRequest.Operation;
-import ds.adam.DublinSuburb22.VideoDoorbellServiceGrpc.VideoDoorbellServiceImplBase;
+
+import ds.adam.VideoDoorbell.DoorLockStatus;
+import ds.adam.VideoDoorbell.DoorLockTamper;
+import ds.adam.VideoDoorbell.VideoDoorbellServiceGrpc.VideoDoorbellServiceImplBase;
 
 public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	
@@ -74,7 +77,6 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	}
 	
 	private  void registerService(Properties prop) {
-		
 		 try {
 	            // Creating a JmDNS instance
 	            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
@@ -83,7 +85,6 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	            String service_name = prop.getProperty("service_name")  ;// "Dublin_Suburb_22";
 	           // int service_port = 1234;
 	            int service_port = Integer.valueOf( prop.getProperty("service_port") );// #.50051;
-
 	            
 	            String service_description = prop.getProperty("service_description")  ;//"Service for home security system";
 	            
@@ -104,34 +105,36 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	        } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-	    
+		}
 	}
 	
 	@Override
-	public void calculate(CalculateRequest request, StreamObserver<CalculateResponse> observer) {
+	public StreamObserver<DoorLockStatus> doorStatus(
+			StreamObserver<DoorLockTamper> responseObserver){
 		
-		float value = Float.NaN;
-		
-		if(request.getOperation() == Operation.ADDITION) {
-	
-			//Requesting values
-			value = request.getNumber1() + request.getNumber2();
-		}
-		
-		CalculateResponse response = CalculateResponse.newBuilder()
-				.setResult(value)
-				.setMessage("Nice one man")
-				.build();
-		
-		//Returning message with the calculation
-		observer.onNext(response);
-		
-		//Success from the stream
-		observer.onCompleted();
+		return new StreamObserver<DoorLockStatus>() {
+			
+			ArrayList<Float> list = new ArrayList();
+			
+			@Override
+			public void onNext(DoorLockStatus request) {
+				System.out.println("Checking the status of the door lock");
+			}
+			
+			@Override
+			public void onError(Throwable t) {
+				
+			}
+			
+			@Override
+			public void onCompleted() {
+				
+			}
+		};
 	}
 	
-	public StreamObserver<Video> homeVideo(StreamObserver<BellRequest> observer){
+	public StreamObserver<Video> homeVideo(
+			StreamObserver<BellRequest> observer){
 		
 		return new StreamObserver<Video> () {
 			

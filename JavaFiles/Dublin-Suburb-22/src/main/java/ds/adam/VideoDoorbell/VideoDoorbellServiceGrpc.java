@@ -1,4 +1,4 @@
-package ds.adam.DublinSuburb22;
+package ds.adam.VideoDoorbell;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -27,68 +27,68 @@ public final class VideoDoorbellServiceGrpc {
   public static final String SERVICE_NAME = "VideoDoorbell.VideoDoorbellService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ds.adam.DublinSuburb22.CalculateRequest,
-      ds.adam.DublinSuburb22.CalculateResponse> getCalculateMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "calculate",
-      requestType = ds.adam.DublinSuburb22.CalculateRequest.class,
-      responseType = ds.adam.DublinSuburb22.CalculateResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ds.adam.DublinSuburb22.CalculateRequest,
-      ds.adam.DublinSuburb22.CalculateResponse> getCalculateMethod() {
-    io.grpc.MethodDescriptor<ds.adam.DublinSuburb22.CalculateRequest, ds.adam.DublinSuburb22.CalculateResponse> getCalculateMethod;
-    if ((getCalculateMethod = VideoDoorbellServiceGrpc.getCalculateMethod) == null) {
-      synchronized (VideoDoorbellServiceGrpc.class) {
-        if ((getCalculateMethod = VideoDoorbellServiceGrpc.getCalculateMethod) == null) {
-          VideoDoorbellServiceGrpc.getCalculateMethod = getCalculateMethod = 
-              io.grpc.MethodDescriptor.<ds.adam.DublinSuburb22.CalculateRequest, ds.adam.DublinSuburb22.CalculateResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "VideoDoorbell.VideoDoorbellService", "calculate"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.adam.DublinSuburb22.CalculateRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.adam.DublinSuburb22.CalculateResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new VideoDoorbellServiceMethodDescriptorSupplier("calculate"))
-                  .build();
-          }
-        }
-     }
-     return getCalculateMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<ds.adam.DublinSuburb22.Video,
-      ds.adam.DublinSuburb22.BellRequest> getHomeVideoMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.adam.VideoDoorbell.Video,
+      ds.adam.VideoDoorbell.BellRequest> getHomeVideoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "homeVideo",
-      requestType = ds.adam.DublinSuburb22.Video.class,
-      responseType = ds.adam.DublinSuburb22.BellRequest.class,
+      requestType = ds.adam.VideoDoorbell.Video.class,
+      responseType = ds.adam.VideoDoorbell.BellRequest.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<ds.adam.DublinSuburb22.Video,
-      ds.adam.DublinSuburb22.BellRequest> getHomeVideoMethod() {
-    io.grpc.MethodDescriptor<ds.adam.DublinSuburb22.Video, ds.adam.DublinSuburb22.BellRequest> getHomeVideoMethod;
+  public static io.grpc.MethodDescriptor<ds.adam.VideoDoorbell.Video,
+      ds.adam.VideoDoorbell.BellRequest> getHomeVideoMethod() {
+    io.grpc.MethodDescriptor<ds.adam.VideoDoorbell.Video, ds.adam.VideoDoorbell.BellRequest> getHomeVideoMethod;
     if ((getHomeVideoMethod = VideoDoorbellServiceGrpc.getHomeVideoMethod) == null) {
       synchronized (VideoDoorbellServiceGrpc.class) {
         if ((getHomeVideoMethod = VideoDoorbellServiceGrpc.getHomeVideoMethod) == null) {
           VideoDoorbellServiceGrpc.getHomeVideoMethod = getHomeVideoMethod = 
-              io.grpc.MethodDescriptor.<ds.adam.DublinSuburb22.Video, ds.adam.DublinSuburb22.BellRequest>newBuilder()
+              io.grpc.MethodDescriptor.<ds.adam.VideoDoorbell.Video, ds.adam.VideoDoorbell.BellRequest>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "VideoDoorbell.VideoDoorbellService", "homeVideo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.adam.DublinSuburb22.Video.getDefaultInstance()))
+                  ds.adam.VideoDoorbell.Video.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ds.adam.DublinSuburb22.BellRequest.getDefaultInstance()))
+                  ds.adam.VideoDoorbell.BellRequest.getDefaultInstance()))
                   .setSchemaDescriptor(new VideoDoorbellServiceMethodDescriptorSupplier("homeVideo"))
                   .build();
           }
         }
      }
      return getHomeVideoMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<ds.adam.VideoDoorbell.DoorLockStatus,
+      ds.adam.VideoDoorbell.DoorLockTamper> getDoorStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "doorStatus",
+      requestType = ds.adam.VideoDoorbell.DoorLockStatus.class,
+      responseType = ds.adam.VideoDoorbell.DoorLockTamper.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<ds.adam.VideoDoorbell.DoorLockStatus,
+      ds.adam.VideoDoorbell.DoorLockTamper> getDoorStatusMethod() {
+    io.grpc.MethodDescriptor<ds.adam.VideoDoorbell.DoorLockStatus, ds.adam.VideoDoorbell.DoorLockTamper> getDoorStatusMethod;
+    if ((getDoorStatusMethod = VideoDoorbellServiceGrpc.getDoorStatusMethod) == null) {
+      synchronized (VideoDoorbellServiceGrpc.class) {
+        if ((getDoorStatusMethod = VideoDoorbellServiceGrpc.getDoorStatusMethod) == null) {
+          VideoDoorbellServiceGrpc.getDoorStatusMethod = getDoorStatusMethod = 
+              io.grpc.MethodDescriptor.<ds.adam.VideoDoorbell.DoorLockStatus, ds.adam.VideoDoorbell.DoorLockTamper>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "VideoDoorbell.VideoDoorbellService", "doorStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ds.adam.VideoDoorbell.DoorLockStatus.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ds.adam.VideoDoorbell.DoorLockTamper.getDefaultInstance()))
+                  .setSchemaDescriptor(new VideoDoorbellServiceMethodDescriptorSupplier("doorStatus"))
+                  .build();
+          }
+        }
+     }
+     return getDoorStatusMethod;
   }
 
   /**
@@ -120,40 +120,40 @@ public final class VideoDoorbellServiceGrpc {
 
     /**
      * <pre>
-     *1st
+     *2nd
      * </pre>
      */
-    public void calculate(ds.adam.DublinSuburb22.CalculateRequest request,
-        io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.CalculateResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getCalculateMethod(), responseObserver);
+    public io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.Video> homeVideo(
+        io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.BellRequest> responseObserver) {
+      return asyncUnimplementedStreamingCall(getHomeVideoMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     *2nd
+     *3rd
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.Video> homeVideo(
-        io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.BellRequest> responseObserver) {
-      return asyncUnimplementedStreamingCall(getHomeVideoMethod(), responseObserver);
+    public io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.DoorLockStatus> doorStatus(
+        io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.DoorLockTamper> responseObserver) {
+      return asyncUnimplementedStreamingCall(getDoorStatusMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getCalculateMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                ds.adam.DublinSuburb22.CalculateRequest,
-                ds.adam.DublinSuburb22.CalculateResponse>(
-                  this, METHODID_CALCULATE)))
-          .addMethod(
             getHomeVideoMethod(),
             asyncBidiStreamingCall(
               new MethodHandlers<
-                ds.adam.DublinSuburb22.Video,
-                ds.adam.DublinSuburb22.BellRequest>(
+                ds.adam.VideoDoorbell.Video,
+                ds.adam.VideoDoorbell.BellRequest>(
                   this, METHODID_HOME_VIDEO)))
+          .addMethod(
+            getDoorStatusMethod(),
+            asyncClientStreamingCall(
+              new MethodHandlers<
+                ds.adam.VideoDoorbell.DoorLockStatus,
+                ds.adam.VideoDoorbell.DoorLockTamper>(
+                  this, METHODID_DOOR_STATUS)))
           .build();
     }
   }
@@ -178,24 +178,24 @@ public final class VideoDoorbellServiceGrpc {
 
     /**
      * <pre>
-     *1st
+     *2nd
      * </pre>
      */
-    public void calculate(ds.adam.DublinSuburb22.CalculateRequest request,
-        io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.CalculateResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getCalculateMethod(), getCallOptions()), request, responseObserver);
+    public io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.Video> homeVideo(
+        io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.BellRequest> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getHomeVideoMethod(), getCallOptions()), responseObserver);
     }
 
     /**
      * <pre>
-     *2nd
+     *3rd
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.Video> homeVideo(
-        io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.BellRequest> responseObserver) {
-      return asyncBidiStreamingCall(
-          getChannel().newCall(getHomeVideoMethod(), getCallOptions()), responseObserver);
+    public io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.DoorLockStatus> doorStatus(
+        io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.DoorLockTamper> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(getDoorStatusMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -216,16 +216,6 @@ public final class VideoDoorbellServiceGrpc {
         io.grpc.CallOptions callOptions) {
       return new VideoDoorbellServiceBlockingStub(channel, callOptions);
     }
-
-    /**
-     * <pre>
-     *1st
-     * </pre>
-     */
-    public ds.adam.DublinSuburb22.CalculateResponse calculate(ds.adam.DublinSuburb22.CalculateRequest request) {
-      return blockingUnaryCall(
-          getChannel(), getCalculateMethod(), getCallOptions(), request);
-    }
   }
 
   /**
@@ -245,21 +235,10 @@ public final class VideoDoorbellServiceGrpc {
         io.grpc.CallOptions callOptions) {
       return new VideoDoorbellServiceFutureStub(channel, callOptions);
     }
-
-    /**
-     * <pre>
-     *1st
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<ds.adam.DublinSuburb22.CalculateResponse> calculate(
-        ds.adam.DublinSuburb22.CalculateRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getCalculateMethod(), getCallOptions()), request);
-    }
   }
 
-  private static final int METHODID_CALCULATE = 0;
-  private static final int METHODID_HOME_VIDEO = 1;
+  private static final int METHODID_HOME_VIDEO = 0;
+  private static final int METHODID_DOOR_STATUS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -278,10 +257,6 @@ public final class VideoDoorbellServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CALCULATE:
-          serviceImpl.calculate((ds.adam.DublinSuburb22.CalculateRequest) request,
-              (io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.CalculateResponse>) responseObserver);
-          break;
         default:
           throw new AssertionError();
       }
@@ -294,7 +269,10 @@ public final class VideoDoorbellServiceGrpc {
       switch (methodId) {
         case METHODID_HOME_VIDEO:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.homeVideo(
-              (io.grpc.stub.StreamObserver<ds.adam.DublinSuburb22.BellRequest>) responseObserver);
+              (io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.BellRequest>) responseObserver);
+        case METHODID_DOOR_STATUS:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.doorStatus(
+              (io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.DoorLockTamper>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -307,7 +285,7 @@ public final class VideoDoorbellServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return ds.adam.DublinSuburb22.VideoDoorbellServiceImpl.getDescriptor();
+      return ds.adam.VideoDoorbell.VideoDoorbellServiceImpl.getDescriptor();
     }
 
     @java.lang.Override
@@ -346,8 +324,8 @@ public final class VideoDoorbellServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new VideoDoorbellServiceFileDescriptorSupplier())
-              .addMethod(getCalculateMethod())
               .addMethod(getHomeVideoMethod())
+              .addMethod(getDoorStatusMethod())
               .build();
         }
       }
