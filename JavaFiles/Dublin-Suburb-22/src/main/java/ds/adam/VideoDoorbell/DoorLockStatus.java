@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DoorLockStatus() {
-    check_ = "";
-    result_ = 0F;
+    check_ = false;
   }
 
   @java.lang.Override
@@ -44,15 +43,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            check_ = s;
-            break;
-          }
-          case 21: {
-
-            result_ = input.readFloat();
+            check_ = input.readBool();
             break;
           }
           default: {
@@ -88,46 +81,12 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int CHECK_FIELD_NUMBER = 1;
-  private volatile java.lang.Object check_;
+  private boolean check_;
   /**
-   * <code>string check = 1;</code>
+   * <code>bool check = 1;</code>
    */
-  public java.lang.String getCheck() {
-    java.lang.Object ref = check_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      check_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string check = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCheckBytes() {
-    java.lang.Object ref = check_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      check_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int RESULT_FIELD_NUMBER = 2;
-  private float result_;
-  /**
-   * <code>float result = 2;</code>
-   */
-  public float getResult() {
-    return result_;
+  public boolean getCheck() {
+    return check_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -144,11 +103,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getCheckBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, check_);
-    }
-    if (result_ != 0F) {
-      output.writeFloat(2, result_);
+    if (check_ != false) {
+      output.writeBool(1, check_);
     }
     unknownFields.writeTo(output);
   }
@@ -159,12 +115,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getCheckBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, check_);
-    }
-    if (result_ != 0F) {
+    if (check_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(2, result_);
+        .computeBoolSize(1, check_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -182,12 +135,8 @@ private static final long serialVersionUID = 0L;
     ds.adam.VideoDoorbell.DoorLockStatus other = (ds.adam.VideoDoorbell.DoorLockStatus) obj;
 
     boolean result = true;
-    result = result && getCheck()
-        .equals(other.getCheck());
-    result = result && (
-        java.lang.Float.floatToIntBits(getResult())
-        == java.lang.Float.floatToIntBits(
-            other.getResult()));
+    result = result && (getCheck()
+        == other.getCheck());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -200,10 +149,8 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + CHECK_FIELD_NUMBER;
-    hash = (53 * hash) + getCheck().hashCode();
-    hash = (37 * hash) + RESULT_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getResult());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getCheck());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -337,9 +284,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      check_ = "";
-
-      result_ = 0F;
+      check_ = false;
 
       return this;
     }
@@ -368,7 +313,6 @@ private static final long serialVersionUID = 0L;
     public ds.adam.VideoDoorbell.DoorLockStatus buildPartial() {
       ds.adam.VideoDoorbell.DoorLockStatus result = new ds.adam.VideoDoorbell.DoorLockStatus(this);
       result.check_ = check_;
-      result.result_ = result_;
       onBuilt();
       return result;
     }
@@ -417,12 +361,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.adam.VideoDoorbell.DoorLockStatus other) {
       if (other == ds.adam.VideoDoorbell.DoorLockStatus.getDefaultInstance()) return this;
-      if (!other.getCheck().isEmpty()) {
-        check_ = other.check_;
-        onChanged();
-      }
-      if (other.getResult() != 0F) {
-        setResult(other.getResult());
+      if (other.getCheck() != false) {
+        setCheck(other.getCheck());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -453,97 +393,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object check_ = "";
+    private boolean check_ ;
     /**
-     * <code>string check = 1;</code>
+     * <code>bool check = 1;</code>
      */
-    public java.lang.String getCheck() {
-      java.lang.Object ref = check_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        check_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public boolean getCheck() {
+      return check_;
     }
     /**
-     * <code>string check = 1;</code>
+     * <code>bool check = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getCheckBytes() {
-      java.lang.Object ref = check_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        check_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string check = 1;</code>
-     */
-    public Builder setCheck(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setCheck(boolean value) {
+      
       check_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string check = 1;</code>
+     * <code>bool check = 1;</code>
      */
     public Builder clearCheck() {
       
-      check_ = getDefaultInstance().getCheck();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string check = 1;</code>
-     */
-    public Builder setCheckBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      check_ = value;
-      onChanged();
-      return this;
-    }
-
-    private float result_ ;
-    /**
-     * <code>float result = 2;</code>
-     */
-    public float getResult() {
-      return result_;
-    }
-    /**
-     * <code>float result = 2;</code>
-     */
-    public Builder setResult(float value) {
-      
-      result_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>float result = 2;</code>
-     */
-    public Builder clearResult() {
-      
-      result_ = 0F;
+      check_ = false;
       onChanged();
       return this;
     }

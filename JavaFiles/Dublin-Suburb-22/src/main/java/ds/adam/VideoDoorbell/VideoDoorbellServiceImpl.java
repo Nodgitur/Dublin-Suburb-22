@@ -48,15 +48,14 @@ public final class VideoDoorbellServiceImpl {
       "quest\022\026\n\016exampleNumber2\030\002 \001(\005\0221\n\006visual\030" +
       "\003 \001(\0162!.VideoDoorbell.BellRequest.Visual" +
       "\"\'\n\006Visual\022\t\n\005GREEN\020\000\022\007\n\003RED\020\002\022\t\n\005ERROR\020" +
-      "\003\"/\n\016DoorLockStatus\022\r\n\005check\030\001 \001(\t\022\016\n\006re" +
-      "sult\030\002 \001(\002\"\"\n\016DoorLockTamper\022\020\n\010intruder" +
-      "\030\001 \001(\0052\253\001\n\024VideoDoorbellService\022C\n\thomeV" +
-      "ideo\022\024.VideoDoorbell.Video\032\032.VideoDoorbe" +
-      "ll.BellRequest\"\000(\0010\001\022N\n\ndoorStatus\022\035.Vid" +
-      "eoDoorbell.DoorLockStatus\032\035.VideoDoorbel" +
-      "l.DoorLockTamper\"\000(\001B3\n\025ds.adam.VideoDoo" +
-      "rbellB\030VideoDoorbellServiceImplP\001b\006proto" +
-      "3"
+      "\003\"\037\n\016DoorLockStatus\022\r\n\005check\030\001 \001(\010\"\"\n\016Do" +
+      "orLockTamper\022\020\n\010intruder\030\001 \001(\0102\253\001\n\024Video" +
+      "DoorbellService\022C\n\thomeVideo\022\024.VideoDoor" +
+      "bell.Video\032\032.VideoDoorbell.BellRequest\"\000" +
+      "(\0010\001\022N\n\ndoorStatus\022\035.VideoDoorbell.DoorL" +
+      "ockStatus\032\035.VideoDoorbell.DoorLockTamper" +
+      "\"\000(\001B3\n\025ds.adam.VideoDoorbellB\030VideoDoor" +
+      "bellServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -87,7 +86,7 @@ public final class VideoDoorbellServiceImpl {
     internal_static_VideoDoorbell_DoorLockStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VideoDoorbell_DoorLockStatus_descriptor,
-        new java.lang.String[] { "Check", "Result", });
+        new java.lang.String[] { "Check", });
     internal_static_VideoDoorbell_DoorLockTamper_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_VideoDoorbell_DoorLockTamper_fieldAccessorTable = new

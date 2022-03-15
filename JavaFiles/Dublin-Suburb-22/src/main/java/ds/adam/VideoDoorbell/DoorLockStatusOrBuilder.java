@@ -8,17 +8,7 @@ public interface DoorLockStatusOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string check = 1;</code>
+   * <code>bool check = 1;</code>
    */
-  java.lang.String getCheck();
-  /**
-   * <code>string check = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getCheckBytes();
-
-  /**
-   * <code>float result = 2;</code>
-   */
-  float getResult();
+  boolean getCheck();
 }

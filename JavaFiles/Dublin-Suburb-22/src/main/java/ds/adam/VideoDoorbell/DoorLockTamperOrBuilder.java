@@ -8,7 +8,7 @@ public interface DoorLockTamperOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 intruder = 1;</code>
+   * <code>bool intruder = 1;</code>
    */
-  int getIntruder();
+  boolean getIntruder();
 }

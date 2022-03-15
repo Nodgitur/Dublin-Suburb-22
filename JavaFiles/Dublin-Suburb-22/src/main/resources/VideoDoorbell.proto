@@ -37,13 +37,12 @@ message BellRequest{
 
 message DoorLockStatus{
 
-	string check = 1;
-	float result = 2;
+	bool check = 1;
 
 }
 
 message DoorLockTamper{
 
-	int32 intruder = 1;
+	bool intruder = 1;
 
 }
