@@ -11,6 +11,7 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
+import java.util.concurrent.TimeUnit;
 
 import ds.adam.VideoDoorbell.DoorLockStatus;
 import ds.adam.VideoDoorbell.DoorLockTamper;
@@ -114,27 +115,50 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 		
 		return new StreamObserver<DoorLockStatus>() {
 			
-			ArrayList<Float> list = new ArrayList();
+			ArrayList<Boolean> list = new ArrayList<>();
 			
 			@Override
-			public void onNext(DoorLockStatus request) {
-				System.out.println("Checking the status of the door lock");
+			public void onNext(DoorLockStatus doorLockStatus) {
+				
+				System.out.println("Here is the value of the door lock status " + doorLockStatus.getCheck());
+				
+				list.add(doorLockStatus.getCheck());
+				
+				System.out.println("Checked the status of the door lock");
 			}
 			
 			@Override
 			public void onError(Throwable t) {
-				
+				t.printStackTrace();
 			}
 			
 			@Override
 			public void onCompleted() {
+				System.out.println("Received doorStatus completed");
 				
+				Boolean doorLocked;
+				
+				if(list.contains(true)) {
+					doorLocked = true;
+				} else {
+					doorLocked = false;
+				}
+				
+				DoorLockTamper tamper = DoorLockTamper
+						.newBuilder()
+						.setIntruder(doorLocked)
+						.build();
+				
+				responseObserver.onNext(tamper);
+				
+				//Success from the stream
+				responseObserver.onCompleted();
 			}
 		};
 	}
 	
 	public StreamObserver<Video> homeVideo(
-			StreamObserver<BellRequest> observer){
+			StreamObserver<BellRequest> responseObserver){
 		
 		return new StreamObserver<Video> () {
 			
@@ -162,7 +186,7 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 						.build();
 				
 				
-				observer.onNext(bell);
+				responseObserver.onNext(bell);
 			}
 			
 			@Override
@@ -178,7 +202,7 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 				System.out.println("Received homeVideo completed");
 				
 				//Success from the stream
-				observer.onCompleted();
+				responseObserver.onCompleted();
 			}
 		};
 	}

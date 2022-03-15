@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DoorLockTamper() {
-    intruder_ = 0;
+    intruder_ = false;
   }
 
   @java.lang.Override
@@ -45,7 +45,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            intruder_ = input.readInt32();
+            intruder_ = input.readBool();
             break;
           }
           default: {
@@ -81,11 +81,11 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int INTRUDER_FIELD_NUMBER = 1;
-  private int intruder_;
+  private boolean intruder_;
   /**
-   * <code>int32 intruder = 1;</code>
+   * <code>bool intruder = 1;</code>
    */
-  public int getIntruder() {
+  public boolean getIntruder() {
     return intruder_;
   }
 
@@ -103,8 +103,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (intruder_ != 0) {
-      output.writeInt32(1, intruder_);
+    if (intruder_ != false) {
+      output.writeBool(1, intruder_);
     }
     unknownFields.writeTo(output);
   }
@@ -115,9 +115,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (intruder_ != 0) {
+    if (intruder_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, intruder_);
+        .computeBoolSize(1, intruder_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -149,7 +149,8 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + INTRUDER_FIELD_NUMBER;
-    hash = (53 * hash) + getIntruder();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIntruder());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -283,7 +284,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      intruder_ = 0;
+      intruder_ = false;
 
       return this;
     }
@@ -360,7 +361,7 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.adam.VideoDoorbell.DoorLockTamper other) {
       if (other == ds.adam.VideoDoorbell.DoorLockTamper.getDefaultInstance()) return this;
-      if (other.getIntruder() != 0) {
+      if (other.getIntruder() != false) {
         setIntruder(other.getIntruder());
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -392,28 +393,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int intruder_ ;
+    private boolean intruder_ ;
     /**
-     * <code>int32 intruder = 1;</code>
+     * <code>bool intruder = 1;</code>
      */
-    public int getIntruder() {
+    public boolean getIntruder() {
       return intruder_;
     }
     /**
-     * <code>int32 intruder = 1;</code>
+     * <code>bool intruder = 1;</code>
      */
-    public Builder setIntruder(int value) {
+    public Builder setIntruder(boolean value) {
       
       intruder_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 intruder = 1;</code>
+     * <code>bool intruder = 1;</code>
      */
     public Builder clearIntruder() {
       
-      intruder_ = 0;
+      intruder_ = false;
       onChanged();
       return this;
     }
