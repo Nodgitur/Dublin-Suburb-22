@@ -28,7 +28,7 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 		
 		videodoorbellserver.registerService(prop);
 		
-		int port = Integer.valueOf(prop.getProperty("service_port"));
+		int port = Integer.valueOf(prop.getProperty("video_doorbell_service_port"));
 		
 		try {
 			
@@ -68,7 +68,7 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	            System.out.println("\t service_type: " + prop.getProperty("service_type"));
 	            System.out.println("\t service_name: " +prop.getProperty("service_name"));
 	            System.out.println("\t service_description: " +prop.getProperty("service_description"));
-		        System.out.println("\t service_port: " +prop.getProperty("service_port"));
+		        System.out.println("\t video_doorbell_service_port: " +prop.getProperty("video_doorbell_service_port"));
 
 	        } catch (IOException ex) {
 	            ex.printStackTrace();
@@ -85,12 +85,12 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	            String service_type = prop.getProperty("service_type") ;//"_DublinSuburb22._tcp.local.";
 	            String service_name = prop.getProperty("service_name")  ;// "Dublin_Suburb_22";
 	           // int service_port = 1234;
-	            int service_port = Integer.valueOf( prop.getProperty("service_port") );// #.50051;
+	            int video_doorbell_service_port = Integer.valueOf( prop.getProperty("video_doorbell_service_port") );// #.50051;
 	            
 	            String service_description = prop.getProperty("service_description")  ;//"Service for home security system";
 	            
 	            // Registering a service
-	            ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description);
+	            ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, video_doorbell_service_port, service_description);
 	            jmdns.registerService(serviceInfo);
 	            
 	            System.out.printf("registering service with type %s and name %s \n", service_type, service_name);
