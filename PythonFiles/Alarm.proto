@@ -1,23 +1,30 @@
 syntax = "proto3";
 
+option java_multiple_files = true;
+option java_package = "grpc.examples.alarm";
+option java_outer_classname = "AlarmProto";
+
 import "google/protobuf/timestamp.proto";
-
-// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. Alarm.proto
-
-service AlarmService{
-  rpc doorLock(UnwantedVisitor) returns(Speaker){}
-}
+package Alarm;
 
 /*
 NOTE TO SELF - Create a server which take in a false or true statement to see if the door is locked. Also, the Speaker
 should use the date value to print the time in which the alarm was triggered.
  */
 
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. Alarm.proto
+
+// Alarm service
+service Alarm{
+  //Basic RPC
+  rpc DoorLock (UnwantedVisitor) returns (Speaker) {}
+}
+
 message UnwantedVisitor{
-  bool isLocked = 1;
+  bool isSecure = 1;
 }
 
 message Speaker{
-  int32 soundSystem = 1;
+  bool soundSystem = 1;
   google.protobuf.Timestamp sirenTime = 2;
 }

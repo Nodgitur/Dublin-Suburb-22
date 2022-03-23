@@ -5,8 +5,15 @@ import grpc
 import Alarm_pb2 as Alarm__pb2
 
 
-class AlarmServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+class AlarmStub(object):
+    """
+    NOTE TO SELF - Create a server which take in a false or true statement to see if the door is locked. Also, the Speaker
+    should use the date value to print the time in which the alarm was triggered.
+
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. Alarm.proto
+
+    Alarm service
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -14,42 +21,57 @@ class AlarmServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.doorLock = channel.unary_unary(
-                '/AlarmService/doorLock',
+        self.DoorLock = channel.unary_unary(
+                '/Alarm.Alarm/DoorLock',
                 request_serializer=Alarm__pb2.UnwantedVisitor.SerializeToString,
                 response_deserializer=Alarm__pb2.Speaker.FromString,
                 )
 
 
-class AlarmServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+class AlarmServicer(object):
+    """
+    NOTE TO SELF - Create a server which take in a false or true statement to see if the door is locked. Also, the Speaker
+    should use the date value to print the time in which the alarm was triggered.
 
-    def doorLock(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. Alarm.proto
+
+    Alarm service
+    """
+
+    def DoorLock(self, request, context):
+        """Basic RPC
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_AlarmServiceServicer_to_server(servicer, server):
+def add_AlarmServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'doorLock': grpc.unary_unary_rpc_method_handler(
-                    servicer.doorLock,
+            'DoorLock': grpc.unary_unary_rpc_method_handler(
+                    servicer.DoorLock,
                     request_deserializer=Alarm__pb2.UnwantedVisitor.FromString,
                     response_serializer=Alarm__pb2.Speaker.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'AlarmService', rpc_method_handlers)
+            'Alarm.Alarm', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class AlarmService(object):
-    """Missing associated documentation comment in .proto file."""
+class Alarm(object):
+    """
+    NOTE TO SELF - Create a server which take in a false or true statement to see if the door is locked. Also, the Speaker
+    should use the date value to print the time in which the alarm was triggered.
+
+    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. Alarm.proto
+
+    Alarm service
+    """
 
     @staticmethod
-    def doorLock(request,
+    def DoorLock(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,7 +81,7 @@ class AlarmService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AlarmService/doorLock',
+        return grpc.experimental.unary_unary(request, target, '/Alarm.Alarm/DoorLock',
             Alarm__pb2.UnwantedVisitor.SerializeToString,
             Alarm__pb2.Speaker.FromString,
             options, channel_credentials,
