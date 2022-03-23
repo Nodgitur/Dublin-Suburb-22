@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x41larm.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"#\n\x0fUnwantedVisitor\x12\x10\n\x08isLocked\x18\x01 \x01(\x08\"M\n\x07Speaker\x12\x13\n\x0bsoundSystem\x18\x01 \x01(\x05\x12-\n\tsirenTime\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp28\n\x0c\x41larmService\x12(\n\x08\x64oorLock\x12\x10.UnwantedVisitor\x1a\x08.Speaker\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x41larm.proto\x12\x05\x41larm\x1a\x1fgoogle/protobuf/timestamp.proto\"#\n\x0fUnwantedVisitor\x12\x10\n\x08isSecure\x18\x01 \x01(\x08\"M\n\x07Speaker\x12\x13\n\x0bsoundSystem\x18\x01 \x01(\x08\x12-\n\tsirenTime\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2=\n\x05\x41larm\x12\x34\n\x08\x44oorLock\x12\x16.Alarm.UnwantedVisitor\x1a\x0e.Alarm.Speaker\"\x00\x42#\n\x13grpc.examples.alarmB\nAlarmProtoP\x01\x62\x06proto3')
 
 
 
@@ -24,25 +24,26 @@ _SPEAKER = DESCRIPTOR.message_types_by_name['Speaker']
 UnwantedVisitor = _reflection.GeneratedProtocolMessageType('UnwantedVisitor', (_message.Message,), {
   'DESCRIPTOR' : _UNWANTEDVISITOR,
   '__module__' : 'Alarm_pb2'
-  # @@protoc_insertion_point(class_scope:UnwantedVisitor)
+  # @@protoc_insertion_point(class_scope:Alarm.UnwantedVisitor)
   })
 _sym_db.RegisterMessage(UnwantedVisitor)
 
 Speaker = _reflection.GeneratedProtocolMessageType('Speaker', (_message.Message,), {
   'DESCRIPTOR' : _SPEAKER,
   '__module__' : 'Alarm_pb2'
-  # @@protoc_insertion_point(class_scope:Speaker)
+  # @@protoc_insertion_point(class_scope:Alarm.Speaker)
   })
 _sym_db.RegisterMessage(Speaker)
 
-_ALARMSERVICE = DESCRIPTOR.services_by_name['AlarmService']
+_ALARM = DESCRIPTOR.services_by_name['Alarm']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _UNWANTEDVISITOR._serialized_start=48
-  _UNWANTEDVISITOR._serialized_end=83
-  _SPEAKER._serialized_start=85
-  _SPEAKER._serialized_end=162
-  _ALARMSERVICE._serialized_start=164
-  _ALARMSERVICE._serialized_end=220
+  DESCRIPTOR._serialized_options = b'\n\023grpc.examples.alarmB\nAlarmProtoP\001'
+  _UNWANTEDVISITOR._serialized_start=55
+  _UNWANTEDVISITOR._serialized_end=90
+  _SPEAKER._serialized_start=92
+  _SPEAKER._serialized_end=169
+  _ALARM._serialized_start=171
+  _ALARM._serialized_end=232
 # @@protoc_insertion_point(module_scope)

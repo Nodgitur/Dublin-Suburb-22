@@ -119,16 +119,24 @@ public class SmartphoneSecurityApplicationServer extends SmartphoneSecurityAppli
 		int firstCode = 0;
 		int secondCode = 0;
 		int codeEntered = 0;
-		DoorLockOpen reply = null;
+		//DoorLockOpen reply = null;
 		PassCode grantAccess = visitorFail;
 		
-		//Loop iterates the code values 5 times, giving a value which is multiplied by 5 each time
-		for(int i=0; i < 5; i++) {
+		/* Loop iterates the code values 5 times, giving a value which is multiplied by 5 each time.
+		 * An additional response will be stream 6. This will have success or failure, determining if the
+		 * code was valid.
+		 */
+		for(int i=0; i < 6; i++) {
 
 			firstCode = (request.getVisitorRequestCode1() * 5) + firstCode;
 			secondCode = (request.getVisitorRequestCode2() * 5) + secondCode;
 			
 			codeEntered = firstCode + secondCode;
+
+			DoorLockOpen reply = DoorLockOpen.newBuilder()
+					.setUserAccept(codeEntered)
+					.setPassCode(grantAccess)
+					.build();
 			
 			//The DoorLockOpen builder should be looking for a value of 25 from the two codes.
 			if(reply.getUserAccept() == 25 && reply.getUserAccept() != 0) {
@@ -137,10 +145,7 @@ public class SmartphoneSecurityApplicationServer extends SmartphoneSecurityAppli
 				grantAccess = visitorFail;
 			}
 			
-			reply = DoorLockOpen.newBuilder()
-					.setUserAccept(codeEntered)
-					.setPassCode(grantAccess)
-					.build();
+			System.out.println("The passcode was " + reply.getPassCodeValue());
 			
 			openObserver.onNext(reply);
 			
@@ -152,8 +157,6 @@ public class SmartphoneSecurityApplicationServer extends SmartphoneSecurityAppli
 				e.printStackTrace();
 			}
 		}
-		
-		System.out.println("The passcode was a " + reply.getPassCodeValue());
 		
 		openObserver.onCompleted();
 	}
