@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private BellRequest() {
-    exampleNumber2_ = 0;
+    connectionIntervals_ = 0;
     visual_ = 0;
   }
 
@@ -44,12 +44,12 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 16: {
+          case 8: {
 
-            exampleNumber2_ = input.readInt32();
+            connectionIntervals_ = input.readInt32();
             break;
           }
-          case 24: {
+          case 16: {
             int rawValue = input.readEnum();
 
             visual_ = rawValue;
@@ -93,32 +93,24 @@ private static final long serialVersionUID = 0L;
   public enum Visual
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>GREEN = 0;</code>
+     * <code>DISCONNECTED = 0;</code>
      */
-    GREEN(0),
+    DISCONNECTED(0),
     /**
-     * <code>RED = 2;</code>
+     * <code>CONNECTED = 1;</code>
      */
-    RED(2),
-    /**
-     * <code>ERROR = 3;</code>
-     */
-    ERROR(3),
+    CONNECTED(1),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>GREEN = 0;</code>
+     * <code>DISCONNECTED = 0;</code>
      */
-    public static final int GREEN_VALUE = 0;
+    public static final int DISCONNECTED_VALUE = 0;
     /**
-     * <code>RED = 2;</code>
+     * <code>CONNECTED = 1;</code>
      */
-    public static final int RED_VALUE = 2;
-    /**
-     * <code>ERROR = 3;</code>
-     */
-    public static final int ERROR_VALUE = 3;
+    public static final int CONNECTED_VALUE = 1;
 
 
     public final int getNumber() {
@@ -139,9 +131,8 @@ private static final long serialVersionUID = 0L;
 
     public static Visual forNumber(int value) {
       switch (value) {
-        case 0: return GREEN;
-        case 2: return RED;
-        case 3: return ERROR;
+        case 0: return DISCONNECTED;
+        case 1: return CONNECTED;
         default: return null;
       }
     }
@@ -194,25 +185,25 @@ private static final long serialVersionUID = 0L;
     // @@protoc_insertion_point(enum_scope:VideoDoorbell.BellRequest.Visual)
   }
 
-  public static final int EXAMPLENUMBER2_FIELD_NUMBER = 2;
-  private int exampleNumber2_;
+  public static final int CONNECTIONINTERVALS_FIELD_NUMBER = 1;
+  private int connectionIntervals_;
   /**
-   * <code>int32 exampleNumber2 = 2;</code>
+   * <code>int32 connectionIntervals = 1;</code>
    */
-  public int getExampleNumber2() {
-    return exampleNumber2_;
+  public int getConnectionIntervals() {
+    return connectionIntervals_;
   }
 
-  public static final int VISUAL_FIELD_NUMBER = 3;
+  public static final int VISUAL_FIELD_NUMBER = 2;
   private int visual_;
   /**
-   * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+   * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
    */
   public int getVisualValue() {
     return visual_;
   }
   /**
-   * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+   * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
    */
   public ds.adam.VideoDoorbell.BellRequest.Visual getVisual() {
     @SuppressWarnings("deprecation")
@@ -234,11 +225,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (exampleNumber2_ != 0) {
-      output.writeInt32(2, exampleNumber2_);
+    if (connectionIntervals_ != 0) {
+      output.writeInt32(1, connectionIntervals_);
     }
-    if (visual_ != ds.adam.VideoDoorbell.BellRequest.Visual.GREEN.getNumber()) {
-      output.writeEnum(3, visual_);
+    if (visual_ != ds.adam.VideoDoorbell.BellRequest.Visual.DISCONNECTED.getNumber()) {
+      output.writeEnum(2, visual_);
     }
     unknownFields.writeTo(output);
   }
@@ -249,13 +240,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (exampleNumber2_ != 0) {
+    if (connectionIntervals_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, exampleNumber2_);
+        .computeInt32Size(1, connectionIntervals_);
     }
-    if (visual_ != ds.adam.VideoDoorbell.BellRequest.Visual.GREEN.getNumber()) {
+    if (visual_ != ds.adam.VideoDoorbell.BellRequest.Visual.DISCONNECTED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(3, visual_);
+        .computeEnumSize(2, visual_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -273,8 +264,8 @@ private static final long serialVersionUID = 0L;
     ds.adam.VideoDoorbell.BellRequest other = (ds.adam.VideoDoorbell.BellRequest) obj;
 
     boolean result = true;
-    result = result && (getExampleNumber2()
-        == other.getExampleNumber2());
+    result = result && (getConnectionIntervals()
+        == other.getConnectionIntervals());
     result = result && visual_ == other.visual_;
     result = result && unknownFields.equals(other.unknownFields);
     return result;
@@ -287,8 +278,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + EXAMPLENUMBER2_FIELD_NUMBER;
-    hash = (53 * hash) + getExampleNumber2();
+    hash = (37 * hash) + CONNECTIONINTERVALS_FIELD_NUMBER;
+    hash = (53 * hash) + getConnectionIntervals();
     hash = (37 * hash) + VISUAL_FIELD_NUMBER;
     hash = (53 * hash) + visual_;
     hash = (29 * hash) + unknownFields.hashCode();
@@ -424,7 +415,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      exampleNumber2_ = 0;
+      connectionIntervals_ = 0;
 
       visual_ = 0;
 
@@ -454,7 +445,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.adam.VideoDoorbell.BellRequest buildPartial() {
       ds.adam.VideoDoorbell.BellRequest result = new ds.adam.VideoDoorbell.BellRequest(this);
-      result.exampleNumber2_ = exampleNumber2_;
+      result.connectionIntervals_ = connectionIntervals_;
       result.visual_ = visual_;
       onBuilt();
       return result;
@@ -504,8 +495,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.adam.VideoDoorbell.BellRequest other) {
       if (other == ds.adam.VideoDoorbell.BellRequest.getDefaultInstance()) return this;
-      if (other.getExampleNumber2() != 0) {
-        setExampleNumber2(other.getExampleNumber2());
+      if (other.getConnectionIntervals() != 0) {
+        setConnectionIntervals(other.getConnectionIntervals());
       }
       if (other.visual_ != 0) {
         setVisualValue(other.getVisualValue());
@@ -539,41 +530,41 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int exampleNumber2_ ;
+    private int connectionIntervals_ ;
     /**
-     * <code>int32 exampleNumber2 = 2;</code>
+     * <code>int32 connectionIntervals = 1;</code>
      */
-    public int getExampleNumber2() {
-      return exampleNumber2_;
+    public int getConnectionIntervals() {
+      return connectionIntervals_;
     }
     /**
-     * <code>int32 exampleNumber2 = 2;</code>
+     * <code>int32 connectionIntervals = 1;</code>
      */
-    public Builder setExampleNumber2(int value) {
+    public Builder setConnectionIntervals(int value) {
       
-      exampleNumber2_ = value;
+      connectionIntervals_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 exampleNumber2 = 2;</code>
+     * <code>int32 connectionIntervals = 1;</code>
      */
-    public Builder clearExampleNumber2() {
+    public Builder clearConnectionIntervals() {
       
-      exampleNumber2_ = 0;
+      connectionIntervals_ = 0;
       onChanged();
       return this;
     }
 
     private int visual_ = 0;
     /**
-     * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+     * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
      */
     public int getVisualValue() {
       return visual_;
     }
     /**
-     * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+     * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
      */
     public Builder setVisualValue(int value) {
       visual_ = value;
@@ -581,7 +572,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+     * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
      */
     public ds.adam.VideoDoorbell.BellRequest.Visual getVisual() {
       @SuppressWarnings("deprecation")
@@ -589,7 +580,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? ds.adam.VideoDoorbell.BellRequest.Visual.UNRECOGNIZED : result;
     }
     /**
-     * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+     * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
      */
     public Builder setVisual(ds.adam.VideoDoorbell.BellRequest.Visual value) {
       if (value == null) {
@@ -601,7 +592,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+     * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
      */
     public Builder clearVisual() {
       

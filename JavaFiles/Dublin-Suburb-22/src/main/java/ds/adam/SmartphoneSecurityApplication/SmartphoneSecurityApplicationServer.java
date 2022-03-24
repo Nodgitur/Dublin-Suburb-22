@@ -126,24 +126,24 @@ public class SmartphoneSecurityApplicationServer extends SmartphoneSecurityAppli
 		 * An additional response will be stream 6. This will have success or failure, determining if the
 		 * code was valid.
 		 */
-		for(int i=0; i < 6; i++) {
+		for(int i = 0; i < 5; i++) {
 
 			firstCode = (request.getVisitorRequestCode1() * 5) + firstCode;
 			secondCode = (request.getVisitorRequestCode2() * 5) + secondCode;
 			
 			codeEntered = firstCode + secondCode;
 
+			//The DoorLockOpen builder should be looking for a value of 25 from the two codes.
+			if(codeEntered == 25 && codeEntered != 0) {
+				grantAccess = visitorPass;
+			} else if (codeEntered != 25 && codeEntered != 0) {
+				grantAccess = visitorFail;
+			}
+			
 			DoorLockOpen reply = DoorLockOpen.newBuilder()
 					.setUserAccept(codeEntered)
 					.setPassCode(grantAccess)
 					.build();
-			
-			//The DoorLockOpen builder should be looking for a value of 25 from the two codes.
-			if(reply.getUserAccept() == 25 && reply.getUserAccept() != 0) {
-				grantAccess = visitorPass;
-			} else if (reply.getUserAccept() != 25 && reply.getUserAccept() != 0) {
-				grantAccess = visitorFail;
-			}
 			
 			System.out.println("The passcode was " + reply.getPassCodeValue());
 			

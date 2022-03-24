@@ -13,7 +13,7 @@ class Alarm(Alarm_pb2_grpc.AlarmServicer):
     def DoorLock(self, request, context):
 
         # soundSystem will always be the opposite value of isSecure. Going off that, we can use not request.isSecure to
-        # make that value always the opposite. For the soundSystem, 1 would be true, and 0 would be false
+        # make that value always the opposite. For the soundSystem, 1 would be true, and 0 would be false 
         timestamp = Timestamp()
         timestamp.GetCurrentTime()
         print(timestamp)
