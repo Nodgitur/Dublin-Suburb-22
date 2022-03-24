@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Video() {
-    exampleNumber1_ = 0;
+    videoConfimrationFromBell_ = false;
   }
 
   @java.lang.Override
@@ -43,9 +43,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 16: {
 
-            exampleNumber1_ = input.readInt32();
+            videoConfimrationFromBell_ = input.readBool();
             break;
           }
           default: {
@@ -80,13 +80,13 @@ private static final long serialVersionUID = 0L;
             ds.adam.VideoDoorbell.Video.class, ds.adam.VideoDoorbell.Video.Builder.class);
   }
 
-  public static final int EXAMPLENUMBER1_FIELD_NUMBER = 1;
-  private int exampleNumber1_;
+  public static final int VIDEOCONFIMRATIONFROMBELL_FIELD_NUMBER = 2;
+  private boolean videoConfimrationFromBell_;
   /**
-   * <code>int32 exampleNumber1 = 1;</code>
+   * <code>bool videoConfimrationFromBell = 2;</code>
    */
-  public int getExampleNumber1() {
-    return exampleNumber1_;
+  public boolean getVideoConfimrationFromBell() {
+    return videoConfimrationFromBell_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -103,8 +103,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (exampleNumber1_ != 0) {
-      output.writeInt32(1, exampleNumber1_);
+    if (videoConfimrationFromBell_ != false) {
+      output.writeBool(2, videoConfimrationFromBell_);
     }
     unknownFields.writeTo(output);
   }
@@ -115,9 +115,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (exampleNumber1_ != 0) {
+    if (videoConfimrationFromBell_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, exampleNumber1_);
+        .computeBoolSize(2, videoConfimrationFromBell_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -135,8 +135,8 @@ private static final long serialVersionUID = 0L;
     ds.adam.VideoDoorbell.Video other = (ds.adam.VideoDoorbell.Video) obj;
 
     boolean result = true;
-    result = result && (getExampleNumber1()
-        == other.getExampleNumber1());
+    result = result && (getVideoConfimrationFromBell()
+        == other.getVideoConfimrationFromBell());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -148,8 +148,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + EXAMPLENUMBER1_FIELD_NUMBER;
-    hash = (53 * hash) + getExampleNumber1();
+    hash = (37 * hash) + VIDEOCONFIMRATIONFROMBELL_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getVideoConfimrationFromBell());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -283,7 +284,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      exampleNumber1_ = 0;
+      videoConfimrationFromBell_ = false;
 
       return this;
     }
@@ -311,7 +312,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public ds.adam.VideoDoorbell.Video buildPartial() {
       ds.adam.VideoDoorbell.Video result = new ds.adam.VideoDoorbell.Video(this);
-      result.exampleNumber1_ = exampleNumber1_;
+      result.videoConfimrationFromBell_ = videoConfimrationFromBell_;
       onBuilt();
       return result;
     }
@@ -360,8 +361,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(ds.adam.VideoDoorbell.Video other) {
       if (other == ds.adam.VideoDoorbell.Video.getDefaultInstance()) return this;
-      if (other.getExampleNumber1() != 0) {
-        setExampleNumber1(other.getExampleNumber1());
+      if (other.getVideoConfimrationFromBell() != false) {
+        setVideoConfimrationFromBell(other.getVideoConfimrationFromBell());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -392,28 +393,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int exampleNumber1_ ;
+    private boolean videoConfimrationFromBell_ ;
     /**
-     * <code>int32 exampleNumber1 = 1;</code>
+     * <code>bool videoConfimrationFromBell = 2;</code>
      */
-    public int getExampleNumber1() {
-      return exampleNumber1_;
+    public boolean getVideoConfimrationFromBell() {
+      return videoConfimrationFromBell_;
     }
     /**
-     * <code>int32 exampleNumber1 = 1;</code>
+     * <code>bool videoConfimrationFromBell = 2;</code>
      */
-    public Builder setExampleNumber1(int value) {
+    public Builder setVideoConfimrationFromBell(boolean value) {
       
-      exampleNumber1_ = value;
+      videoConfimrationFromBell_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 exampleNumber1 = 1;</code>
+     * <code>bool videoConfimrationFromBell = 2;</code>
      */
-    public Builder clearExampleNumber1() {
+    public Builder clearVideoConfimrationFromBell() {
       
-      exampleNumber1_ = 0;
+      videoConfimrationFromBell_ = false;
       onChanged();
       return this;
     }

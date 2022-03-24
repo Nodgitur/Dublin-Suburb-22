@@ -8,31 +8,31 @@ package VideoDoorbell;
 
 service VideoDoorbellService{
 
-	//2nd
+	//Bidirectional RPC
 	rpc homeVideo(stream Video) returns (stream BellRequest){}
 
-	//3rd
+	//Client-Side Streaming
 	rpc doorStatus(stream DoorLockStatus) returns(DoorLockTamper){}
 
 }
 
 message Video{
 
-	int32 exampleNumber1 = 1;
+	bool videoConfimrationFromBell = 2;
 
 }
 
 message BellRequest{
 
-	int32 exampleNumber2 = 2;
+	int32 connectionIntervals = 1;
 
 	enum Visual{
-		GREEN = 0;
-		RED = 2;
-		ERROR = 3;
+		DISCONNECTED = 0;
+		CONNECTED = 1;
 	}
 
-	Visual visual = 3;
+	Visual visual = 2;
+
 }
 
 message DoorLockStatus{

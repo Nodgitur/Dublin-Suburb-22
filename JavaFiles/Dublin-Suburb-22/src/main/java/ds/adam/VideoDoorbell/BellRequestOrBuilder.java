@@ -8,16 +8,16 @@ public interface BellRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 exampleNumber2 = 2;</code>
+   * <code>int32 connectionIntervals = 1;</code>
    */
-  int getExampleNumber2();
+  int getConnectionIntervals();
 
   /**
-   * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+   * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
    */
   int getVisualValue();
   /**
-   * <code>.VideoDoorbell.BellRequest.Visual visual = 3;</code>
+   * <code>.VideoDoorbell.BellRequest.Visual visual = 2;</code>
    */
   ds.adam.VideoDoorbell.BellRequest.Visual getVisual();
 }

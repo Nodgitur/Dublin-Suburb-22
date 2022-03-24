@@ -13,6 +13,7 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 import java.util.concurrent.TimeUnit;
 
+import ds.adam.VideoDoorbell.BellRequest.Visual;
 import ds.adam.VideoDoorbell.DoorLockStatus;
 import ds.adam.VideoDoorbell.DoorLockTamper;
 import ds.adam.VideoDoorbell.VideoDoorbellServiceGrpc.VideoDoorbellServiceImplBase;
@@ -136,17 +137,17 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 			public void onCompleted() {
 				System.out.println("Received doorStatus completed");
 				
-				Boolean doorLocked;
+				Boolean intruderIsPresent;
 				
 				if(list.contains(true)) {
-					doorLocked = true;
+					intruderIsPresent = false;
 				} else {
-					doorLocked = false;
+					intruderIsPresent = true;
 				}
 				
 				DoorLockTamper tamper = DoorLockTamper
 						.newBuilder()
-						.setIntruder(doorLocked)
+						.setIntruder(intruderIsPresent)
 						.build();
 				
 				responseObserver.onNext(tamper);
@@ -162,31 +163,41 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 		
 		return new StreamObserver<Video> () {
 			
+			int iteratedValue = 0;
+			
 			/*
 			 * This method is to receive a value from the stream.
 			 */
 			
 			@Override
 			public void onNext(Video video) {
-				int iteratedValue = 0;
 				
-				for(int i = 0; i < 5; i++) {
-					
-					iteratedValue++;
-					
-				}
+				iteratedValue = iteratedValue + 1;
 				
-				System.out.println("Here is the number from video " + video.getExampleNumber1() + 
-						". Here is the iterated number " + iteratedValue);
+				boolean confirmation = video.getVideoConfimrationFromBell();
 				
-				int videoValue = video.getExampleNumber1() + iteratedValue;
+				//int videoValue = video.getExampleNumber1() + iteratedValue;
 				
-				BellRequest bell = BellRequest.newBuilder()
-						.setExampleNumber2(videoValue)
+				Visual goodVisual = Visual.CONNECTED;
+				Visual badVisual = Visual.DISCONNECTED;
+				
+				if(confirmation == true) {
+					BellRequest bell = BellRequest.newBuilder()
+						.setConnectionIntervals(iteratedValue)
+						.setVisual(goodVisual)
 						.build();
+					
+					responseObserver.onNext(bell);
+					
+				} else if (confirmation == false) {
+					BellRequest bell = BellRequest.newBuilder()
+						.setConnectionIntervals(iteratedValue)
+						.setVisual(badVisual)
+						.build();
+					
+					responseObserver.onNext(bell);
 				
-				
-				responseObserver.onNext(bell);
+				}
 			}
 			
 			@Override

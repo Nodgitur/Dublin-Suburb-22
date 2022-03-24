@@ -43,19 +43,20 @@ public final class VideoDoorbellServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023VideoDoorbell.proto\022\rVideoDoorbell\"\037\n\005" +
-      "Video\022\026\n\016exampleNumber1\030\001 \001(\005\"\201\001\n\013BellRe" +
-      "quest\022\026\n\016exampleNumber2\030\002 \001(\005\0221\n\006visual\030" +
-      "\003 \001(\0162!.VideoDoorbell.BellRequest.Visual" +
-      "\"\'\n\006Visual\022\t\n\005GREEN\020\000\022\007\n\003RED\020\002\022\t\n\005ERROR\020" +
-      "\003\"\037\n\016DoorLockStatus\022\r\n\005check\030\001 \001(\010\"\"\n\016Do" +
-      "orLockTamper\022\020\n\010intruder\030\001 \001(\0102\253\001\n\024Video" +
-      "DoorbellService\022C\n\thomeVideo\022\024.VideoDoor" +
-      "bell.Video\032\032.VideoDoorbell.BellRequest\"\000" +
-      "(\0010\001\022N\n\ndoorStatus\022\035.VideoDoorbell.DoorL" +
-      "ockStatus\032\035.VideoDoorbell.DoorLockTamper" +
-      "\"\000(\001B3\n\025ds.adam.VideoDoorbellB\030VideoDoor" +
-      "bellServiceImplP\001b\006proto3"
+      "\n\023VideoDoorbell.proto\022\rVideoDoorbell\"*\n\005" +
+      "Video\022!\n\031videoConfimrationFromBell\030\002 \001(\010" +
+      "\"\210\001\n\013BellRequest\022\033\n\023connectionIntervals\030" +
+      "\001 \001(\005\0221\n\006visual\030\002 \001(\0162!.VideoDoorbell.Be" +
+      "llRequest.Visual\")\n\006Visual\022\020\n\014DISCONNECT" +
+      "ED\020\000\022\r\n\tCONNECTED\020\001\"\037\n\016DoorLockStatus\022\r\n" +
+      "\005check\030\001 \001(\010\"\"\n\016DoorLockTamper\022\020\n\010intrud" +
+      "er\030\001 \001(\0102\253\001\n\024VideoDoorbellService\022C\n\thom" +
+      "eVideo\022\024.VideoDoorbell.Video\032\032.VideoDoor" +
+      "bell.BellRequest\"\000(\0010\001\022N\n\ndoorStatus\022\035.V" +
+      "ideoDoorbell.DoorLockStatus\032\035.VideoDoorb" +
+      "ell.DoorLockTamper\"\000(\001B3\n\025ds.adam.VideoD" +
+      "oorbellB\030VideoDoorbellServiceImplP\001b\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -74,13 +75,13 @@ public final class VideoDoorbellServiceImpl {
     internal_static_VideoDoorbell_Video_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VideoDoorbell_Video_descriptor,
-        new java.lang.String[] { "ExampleNumber1", });
+        new java.lang.String[] { "VideoConfimrationFromBell", });
     internal_static_VideoDoorbell_BellRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_VideoDoorbell_BellRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VideoDoorbell_BellRequest_descriptor,
-        new java.lang.String[] { "ExampleNumber2", "Visual", });
+        new java.lang.String[] { "ConnectionIntervals", "Visual", });
     internal_static_VideoDoorbell_DoorLockStatus_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_VideoDoorbell_DoorLockStatus_fieldAccessorTable = new

@@ -8,7 +8,7 @@ public interface VideoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 exampleNumber1 = 1;</code>
+   * <code>bool videoConfimrationFromBell = 2;</code>
    */
-  int getExampleNumber1();
+  boolean getVideoConfimrationFromBell();
 }
