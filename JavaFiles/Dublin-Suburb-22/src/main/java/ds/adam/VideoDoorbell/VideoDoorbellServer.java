@@ -10,7 +10,10 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
+
 import java.util.concurrent.TimeUnit;
 
 import ds.adam.VideoDoorbell.BellRequest.Visual;
@@ -20,7 +23,7 @@ import ds.adam.VideoDoorbell.VideoDoorbellServiceGrpc.VideoDoorbellServiceImplBa
 
 public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		//Creating instance of VideoDoorbellServer
 		VideoDoorbellServer videodoorbellserver = new VideoDoorbellServer();
@@ -67,8 +70,8 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	            // get the property value and print it out
 	            System.out.println("VideoDoorbell service properies ...");
 	            System.out.println("\t service_type: " + prop.getProperty("service_type"));
-	            System.out.println("\t service_name: " +prop.getProperty("service_name"));
-	            System.out.println("\t service_description: " +prop.getProperty("service_description"));
+	            System.out.println("\t video_doorbell_service_name: " +prop.getProperty("video_doorbell_service_name"));
+	            System.out.println("\t video_doorbell_service_description: " +prop.getProperty("video_doorbell_service_description"));
 		        System.out.println("\t video_doorbell_service_port: " +prop.getProperty("video_doorbell_service_port"));
 
 	        } catch (IOException ex) {
@@ -84,22 +87,24 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 	            
 	            String service_type = prop.getProperty("service_type") ;//"_DublinSuburb22._tcp.local.";
-	            String service_name = prop.getProperty("service_name")  ;// "Dublin_Suburb_22";
-	           // int service_port = 1234;
+	            String video_doorbell_service_name = prop.getProperty("video_doorbell_service_name")  ;// "Dublin_Suburb_22";
 	            int video_doorbell_service_port = Integer.valueOf( prop.getProperty("video_doorbell_service_port") );// #.50051;
 	            
-	            String service_description = prop.getProperty("service_description")  ;//"Service for home security system";
+	            String video_doorbell_service_description = prop.getProperty("video_doorbell_service_description")  ;//"Service for home security system";
 	            
 	            // Registering a service
-	            ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, video_doorbell_service_port, service_description);
+	            ServiceInfo serviceInfo = ServiceInfo.create(service_type, video_doorbell_service_name, video_doorbell_service_port, video_doorbell_service_description);
 	            jmdns.registerService(serviceInfo);
 	            
-	            System.out.printf("registering service with type %s and name %s \n", service_type, service_name);
+	            System.out.printf("registering service with type %s and name %s \n", service_type, video_doorbell_service_name);
+	            
+	            // Service discovery
+	            jmdns.addServiceListener(service_type, new Listener());
 	            
 	            // Waiting for 1 second
 	            Thread.sleep(1000);
 
-	            // Unregister all services
+	            // Uncomment to unregister services
 	            //jmdns.unregisterAllServices();
 
 	        } catch (IOException e) {
@@ -108,6 +113,25 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
+	}
+	
+	// Discovery service
+	public static class Listener implements ServiceListener{
+		
+		@Override
+	    public void serviceAdded(ServiceEvent event) {
+	        System.out.println("Service added: " + event.getInfo());
+	    }
+	
+	    @Override
+	    public void serviceRemoved(ServiceEvent event) {
+	        System.out.println("Service removed: " + event.getInfo());
+	    }
+	
+	    @Override
+	    public void serviceResolved(ServiceEvent event) {
+	        System.out.println("Service resolved: " + event.getInfo());
+	    }
 	}
 	
 	@Override

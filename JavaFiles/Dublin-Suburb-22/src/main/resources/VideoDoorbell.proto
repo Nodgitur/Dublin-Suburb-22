@@ -8,7 +8,7 @@ package VideoDoorbell;
 
 service VideoDoorbellService{
 
-	//Bidirectional RPC
+	//Bidirectional Streaming
 	rpc homeVideo(stream Video) returns (stream BellRequest){}
 
 	//Client-Side Streaming
