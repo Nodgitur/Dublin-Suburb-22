@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.adam.SmartphoneSecurityApplication";
+option java_outer_classname = "SmartphoneSecurityApplicationServiceImpl";
+
+package SmartphoneSecurityApplication;
+
+service SmartphoneSecurityApplicationService{
+
+	//Server-Side Streaming
+	rpc visitorUnlock(DoorRequest) returns(stream DoorLockOpen){}
+
+}
+
+message DoorRequest{
+
+	int32 visitorRequestCode1 = 1;
+	int32 visitorRequestCode2 = 2;
+}
+
+message DoorLockOpen{
+
+	enum PassCode{
+		error = 0;
+		failure = 1;
+		success = 2;
+	}
+
+	PassCode passCode = 1;
+
+	int32 userAccept = 2;
+}

@@ -104,9 +104,6 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 	            // Waiting for 1 second
 	            Thread.sleep(1000);
 
-	            // Uncomment to unregister services
-	            //jmdns.unregisterAllServices();
-
 	        } catch (IOException e) {
 	            System.out.println(e.getMessage());
 	        } catch (InterruptedException e) {
@@ -200,28 +197,32 @@ public class VideoDoorbellServer extends VideoDoorbellServiceImplBase {
 				
 				boolean confirmation = video.getVideoConfimrationFromBell();
 				
+				System.out.println(confirmation);
+				
 				//int videoValue = video.getExampleNumber1() + iteratedValue;
 				
 				Visual goodVisual = Visual.CONNECTED;
 				Visual badVisual = Visual.DISCONNECTED;
 				
+				BellRequest bell;
+				
 				if(confirmation == true) {
-					BellRequest bell = BellRequest.newBuilder()
+					bell = BellRequest.newBuilder()
 						.setConnectionIntervals(iteratedValue)
 						.setVisual(goodVisual)
 						.build();
 					
-					responseObserver.onNext(bell);
-					
-				} else if (confirmation == false) {
-					BellRequest bell = BellRequest.newBuilder()
+				} else {
+					bell = BellRequest.newBuilder()
 						.setConnectionIntervals(iteratedValue)
 						.setVisual(badVisual)
 						.build();
-					
-					responseObserver.onNext(bell);
 				
 				}
+				
+				System.out.println(bell.getVisual());
+				
+				responseObserver.onNext(bell);
 			}
 			
 			@Override

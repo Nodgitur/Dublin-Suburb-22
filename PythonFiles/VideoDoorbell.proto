@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.adam.VideoDoorbell";
+option java_outer_classname = "VideoDoorbellServiceImpl";
+
+package VideoDoorbell;
+
+service VideoDoorbellService{
+
+	//Bidirectional Streaming
+	rpc homeVideo(stream Video) returns (stream BellRequest){}
+
+	//Client-Side Streaming
+	rpc doorStatus(stream DoorLockStatus) returns(DoorLockTamper){}
+
+}
+
+message Video{
+
+	bool videoConfimrationFromBell = 2;
+
+}
+
+message BellRequest{
+
+	int32 connectionIntervals = 1;
+
+	enum Visual{
+		DISCONNECTED = 0;
+		CONNECTED = 1;
+	}
+
+	Visual visual = 2;
+
+}
+
+message DoorLockStatus{
+
+	bool check = 1;
+
+}
+
+message DoorLockTamper{
+
+	bool intruder = 1;
+
+}
