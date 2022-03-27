@@ -120,7 +120,7 @@ public final class VideoDoorbellServiceGrpc {
 
     /**
      * <pre>
-     *Bidirectional RPC
+     *Bidirectional Streaming
      * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.Video> homeVideo(
@@ -178,7 +178,7 @@ public final class VideoDoorbellServiceGrpc {
 
     /**
      * <pre>
-     *Bidirectional RPC
+     *Bidirectional Streaming
      * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.adam.VideoDoorbell.Video> homeVideo(

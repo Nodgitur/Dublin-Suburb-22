@@ -100,9 +100,6 @@ public class SmartphoneSecurityApplicationServer extends SmartphoneSecurityAppli
 	            // Waiting for 1 second
 	            Thread.sleep(1000);
 
-	            // Uncomment to unregister all services
-	            //jmdns.unregisterAllServices();
-
 	        } catch (IOException e) {
 	            System.out.println(e.getMessage());
 	        } catch (InterruptedException e) {
